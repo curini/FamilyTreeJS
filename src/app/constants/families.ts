@@ -1,0 +1,42 @@
+import { Node } from '../interfaces/node';
+import { Gender } from '../enums/gender';
+
+export const Families: Node[] = [
+{
+    "key": 105,
+    "gender": "M",
+    "name": "Charles Martin",
+    "birth": "11/05/1820",
+    "birthplace": "Saint-Savinien-sur-Charente",
+    "death": "02/24/1875",
+    "deathplace": "Rochefort",
+    "spouse": 104,
+    "group": 1040,
+    "generation": 13
+  },
+  {
+    "key": 104,
+    "gender": "F",
+    "name": "Marie Pierre",
+    "birth": "03/08/1824",
+    "birthplace": "Mensle",
+    "death": "05/01/1870",
+    "deathplace": "Saintes",
+    "spouse": 105,
+    "group": 1040,
+    "generation": 13
+  },
+  { "key": 1040, "isGroup": true },
+{
+    "key": 103,
+    "gender": "M",
+    "name": "Alphonse Martin",
+    "birth": "04/11/1848",
+    "birthplace": "Saintes",
+    "death": "07/01/1902",
+    "deathplace": "Paris",
+    "group": 1039,
+    "generation": 13
+  }
+];
+
