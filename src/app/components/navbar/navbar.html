@@ -1,0 +1,30 @@
+<nav class="bg-white shadow-md">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="flex justify-between items-center h-16">
+      <div class="flex-shrink-0">
+        <a routerLink="/" class="text-2xl font-bold text-blue-600">
+          <img src="/img/logo/tree.jpg" alt="logo" class="w-auto h-16" />
+        </a>
+      </div>
+
+      <div class="hidden md:flex space-x-8">
+        <a routerLink="/" class="text-gray-700 hover:text-blue-600 transition">Home</a>
+        <a routerLink="/pages/tree" class="text-gray-700 hover:text-blue-600 transition">Tree</a>
+        <a routerLink="/events" class="text-gray-700 hover:text-blue-600 transition">Events</a>
+        <a routerLink="/images" class="text-gray-700 hover:text-blue-600 transition">Images</a>
+      </div>
+
+      <div class="md:hidden">
+        <button id="menu-btn" class="text-gray-700 focus:outline-none" (click)="handleMenuToggle()">
+          ☰
+        </button>
+      </div>
+    </div>
+  </div>
+  <div id="mobile-menu" class="hidden md:hidden px-4 pb-4">
+    <a routerLink="/" class="block py-2 text-gray-700 hover:text-blue-600">Home</a>
+    <a routerLink="/pages/tree" class="block py-2 text-gray-700 hover:text-blue-600">Tree</a>
+    <a routerLink="/events" class="block py-2 text-gray-700 hover:text-blue-600">Events</a>
+    <a routerLink="/images" class="block py-2 text-gray-700 hover:text-blue-600">Images</a>
+  </div>
+</nav>
