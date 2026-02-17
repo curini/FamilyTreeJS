@@ -1,13 +1,8 @@
-import { Component, input, AfterViewInit, effect } from '@angular/core';
+import { Component, input, AfterViewInit } from '@angular/core';
 import * as L from 'leaflet';
+import { Marker } from '../../types/marker';
 
 delete (L.Icon.Default.prototype as any)._getIconUrl;
-
-type Marker = {
-  latitude: number;
-  longitude: number;
-  total: number;
-};
 
 L.Icon.Default.mergeOptions({
   iconRetinaUrl: '/media/marker-icon-2x.png',
@@ -24,8 +19,6 @@ L.Icon.Default.mergeOptions({
 export class Map implements AfterViewInit {
   markers = input<Marker[]>([]);
   map: L.Map | undefined;
-
-  constructor() {}
 
   ngAfterViewInit(): void {
     this.initMap();
