@@ -7,7 +7,7 @@ import { Tree } from '../pages/tree/tree';
 export const routes: Routes = [
   { path: '', component: Stats },
   { path: 'index', component: Index },
-  { path: 'show', component: Show },
+  { path: 'show/:id', component: Show },
   { path: 'tree', component: Tree },
   { path: '**', redirectTo: '' },
 ];
