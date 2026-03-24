@@ -30,10 +30,6 @@ export class Tree implements OnInit {
         template: 'main',
         scaleInitial: 0.6,
         mouseScrool: FamilyTree.none,
-        menu: {
-          pdf: { text: 'Export PDF' },
-          png: { text: 'Export PNG' },
-        },
         nodeBinding: {
           field_1: 'name',
           field_2: 'bdate',
