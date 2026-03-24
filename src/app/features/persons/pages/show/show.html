@@ -1,1 +1,120 @@
-<p>show works!</p>
+<div class="container mx-auto p-6">
+  <div class="flex justify-between items-center mb-6">
+    <h1 class="text-3xl font-bold">
+      {{ this.getName() }}
+    </h1>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+    <div class="space-y-6">
+      @if (personSelected && personSelected.image_id) {
+        <div class="[:where(&)]:w-64 bg-gray-100 overflow-hidden">
+          <img
+            src="{{ this.getImage(personSelected.image_id) }}"
+            alt="Portrait"
+            class="w-full h-full object-cover"
+          />
+        </div>
+      }
+
+      <div class="p-6 space-y-4">
+        <h3 class="text-xl font-semibold">Personal Information</h3>
+
+        <p><strong>First names:</strong> {{ personSelected?.first_names }}</p>
+
+        @if (this.getGender()) {
+          <p><strong>Gender:</strong> {{ this.getGender() }}</p>
+        }
+
+        @if (this.getAge()) {
+          <p><strong>Age:</strong> {{ this.getAge() }}</p>
+        }
+
+        @if (personSelected?.job) {
+          <p><strong>Job:</strong> {{ personSelected?.job }}</p>
+        }
+
+        @if (personSelected?.description) {
+          <p>
+            <strong>Description:</strong>
+            <span style="white-space: pre-wrap">
+              {{ personSelected?.description }}
+            </span>
+          </p>
+        }
+      </div>
+
+      <div class="p-6 space-y-4">
+        <h3 class="text-xl font-semibold">Family</h3>
+
+        @if (personSelected?.mother_person && personSelected?.mother_person?.id) {
+          <p>
+            <strong>Mother:</strong>
+            <a [routerLink]="['/pages/show', personSelected?.mother_person?.id]">
+              {{ personSelected?.mother_person?.first_name }}
+              {{ personSelected?.mother_person?.last_name }}
+            </a>
+          </p>
+        }
+
+        @if (personSelected?.father_person && personSelected?.father_person?.id) {
+          <p>
+            <strong>Father:</strong>
+            <a [routerLink]="['/pages/show', personSelected?.father_person?.id]">
+              {{ personSelected?.father_person?.first_name }}
+              {{ personSelected?.father_person?.last_name }}
+            </a>
+          </p>
+        }
+
+        @if (personSelected?.spouse_person) {
+          <p>
+            <strong>Spouse:</strong>
+            <a [routerLink]="['/pages/show', personSelected?.spouse_person?.id]">
+              {{ personSelected?.spouse_person?.first_name }}
+              {{ personSelected?.spouse_person?.last_name }}
+            </a>
+          </p>
+        }
+      </div>
+    </div>
+
+    <div class="space-y-6">
+      <div class="flex-1 relative pl-6 border-l-4 border-zinc-300 space-y-8">
+        @if (eventSelected && eventSelected.length > 0) {
+          @for (event of eventSelected; track event.id) {
+            <div class="relative">
+              <div class="date-marker"></div>
+
+              <div class="bg-white rounded-lg shadow-md overflow-hidden border border-gray-200">
+                <a>
+                  @if (event.image_id) {
+                    <img
+                      src="{{ this.getImage(event.image_id) }}"
+                      alt="Event image"
+                      class="w-full h-48 object-cover"
+                    />
+                  }
+
+                  <div class="p-4 text-sm space-y-2">
+                    <div class="flex items-center justify-between text-gray-600">
+                      <span>{{ event.date | date: 'dd MMM yyyy' }}</span>
+                      <span class="px-2 py-1 bg-zinc-400/15 text-zinc-800 text-xs rounded">
+                        {{ this.getEventType(event.event_type_id) }}
+                      </span>
+                    </div>
+                    <h2 class="font-semibold text-lg text-gray-800 truncate"></h2>
+
+                    <p class="text-gray-600">
+                      {{ this.getCity(event.city_id) }}
+                    </p>
+                  </div>
+                </a>
+              </div>
+            </div>
+          }
+        }
+      </div>
+    </div>
+  </div>
+</div>
