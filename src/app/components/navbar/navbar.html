@@ -21,7 +21,7 @@
       </div>
     </div>
   </div>
-  <div id="mobile-menu" class="hidden md:hidden px-4 pb-4">
+  <div id="mobile-menu" class="hidden md:hidden px-4 pb-4" (click)="handleMenuToggle()">
     <a routerLink="/" class="block py-2 text-gray-700 hover:text-blue-600">Home</a>
     <a routerLink="/pages/tree" class="block py-2 text-gray-700 hover:text-blue-600">Tree</a>
     <a routerLink="/events" class="block py-2 text-gray-700 hover:text-blue-600">Events</a>
