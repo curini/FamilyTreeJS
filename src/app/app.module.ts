@@ -7,7 +7,10 @@ import { routes } from './app.routes';
 import { DatePipe, registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr'; // Locale française
 import { PagesModule } from './pages/pages.module';
-import { HttpClientModule } from '@angular/common/http';
+import {
+  provideHttpClient,
+  withInterceptorsFromDi,
+} from '@angular/common/http';
 
 registerLocaleData(localeFr, 'fr');
 
@@ -15,13 +18,12 @@ registerLocaleData(localeFr, 'fr');
   declarations: [AppComponent],
   imports: [
     BrowserModule,
-    HttpClientModule,
     SharedModule,
     RouterLink,
     RouterModule.forRoot(routes),
     PagesModule,
   ],
-  providers: [DatePipe],
+  providers: [DatePipe, provideHttpClient(withInterceptorsFromDi())],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
