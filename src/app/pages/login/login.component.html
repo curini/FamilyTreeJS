@@ -1,12 +1,32 @@
-<h1 class="h1">Connexion</h1>
-<form action="" class="form">
-  <div class="input-group gap-2 mt-2">
-    <label for="login" class="form-label">Identifiant</label>
-    <input type="text" class="form-control" name="login" id="login" />
-  </div>
-  <div class="input-group gap-2 mt-2">
-    <label for="password" class="form-label">Mot de passe</label>
-    <input type="text" class="form-control" name="password" id="password" />
-  </div>
-  <button class="btn btn-primary mt-2">Se connecter</button>
-</form>
+<div class="container">
+  <h1 class="h1">Connexion</h1>
+  <form (ngSubmit)="handleSubmit()" class="form" [formGroup]="form">
+    <div class="input-group gap-2 mt-2">
+      <label for="login" class="form-label">Identifiant</label>
+      <input
+        type="text"
+        class="form-control"
+        name="login"
+        id="login"
+        formControlName="login"
+      />
+    </div>
+    <div class="input-group gap-2 mt-2">
+      <label for="password" class="form-label">Mot de passe</label>
+      <input
+        type="password"
+        class="form-control"
+        name="password"
+        id="password"
+        formControlName="password"
+      />
+    </div>
+    <button
+      class="btn btn-primary mt-2"
+      type="submit"
+      [disabled]="form.invalid"
+    >
+      Se connecter
+    </button>
+  </form>
+</div>
