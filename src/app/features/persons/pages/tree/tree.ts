@@ -22,11 +22,16 @@ export class Tree implements OnInit {
 
   ngOnInit() {
     const familyContent: HTMLElement | null = document.getElementById('familyTreeCanvas');
-    const persons: {}[] = myTree;
+    const persons: {}[] = myTree.sort((a, b) => b.id - a.id);
 
     if (familyContent) {
       this.defaultConfig();
       this.familyMap = new FamilyTree(familyContent, {
+        clinks: [
+          { from: 45, to: 44, label: 'married' },
+          { from: 44, to: 52, label: 'daughter' },
+          { from: 49, to: 44, label: 'son' },
+        ],
         template: 'main',
         scaleInitial: 0.6,
         mouseScrool: FamilyTree.none,

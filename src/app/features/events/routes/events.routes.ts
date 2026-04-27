@@ -4,6 +4,6 @@ import { Show } from '../pages/show/show';
 
 export const routes: Routes = [
   { path: '', component: Index },
-  { path: 'show', component: Show },
+  { path: 'show/:id', component: Show },
   { path: '**', redirectTo: '' },
 ];

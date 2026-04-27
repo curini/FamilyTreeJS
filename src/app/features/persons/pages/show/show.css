@@ -1,0 +1,41 @@
+.date-marker {
+  border-style: var(--tw-border-style);
+  border-width: 2px;
+  border-color: var(--color-zinc-300);
+  width: calc(var(--spacing) * 6);
+  height: calc(var(--spacing) * 6);
+  left: calc(var(--spacing) * -3);
+  top: calc(var(--spacing) * 2);
+  position: absolute;
+  border-radius: 3.40282e38px;
+  background-color: var(--color-white);
+  z-index: 1;
+}
+
+.date-marker::before {
+  content: '';
+  background-color: var(--color-zinc-300);
+  width: 14px;
+  height: 2px;
+  display: block;
+  position: absolute;
+  left: -14px;
+  top: 10px;
+}
+
+.custom-event:hover {
+  cursor: pointer;
+  .shadow-md {
+    --tw-shadow:
+      0 6px 8px 0px var(--tw-shadow-color, rgb(0 0 0 / 0.1)),
+      0 4px 5px 0px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
+  }
+  img {
+    -webkit-transform: scale(1.05, 1.07);
+    -webkit-transition-timing-function: ease-out;
+    -webkit-transition-duration: 150ms;
+    -moz-transform: scale(1.05, 1.07);
+    -moz-transition-timing-function: ease-out;
+    -moz-transition-duration: 150ms;
+  }
+}

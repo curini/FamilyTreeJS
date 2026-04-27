@@ -76,6 +76,46 @@
             </a>
           </p>
         }
+
+        @if (personSelected && personSelected.children_as_father.length > 0) {
+          <p>
+            <strong>{{ 'Children:' }}</strong>
+            @for (child of personSelected.children_as_father; track $index) {
+              @if ($index > 0) {
+                ,
+              }
+              <a [routerLink]="['/pages/show', child.id]">
+                {{ child.first_name }} {{ child.last_name }}
+              </a>
+            }
+          </p>
+        } @else if (personSelected && personSelected.children_as_mother.length > 0) {
+          <p>
+            <strong>{{ 'Children:' }}</strong>
+            @for (child of personSelected.children_as_mother; track $index) {
+              @if ($index > 0) {
+                ,
+              }
+              <a [routerLink]="['/pages/show', child.id]">
+                {{ child.first_name }} {{ child.last_name }}
+              </a>
+            }
+          </p>
+        }
+
+        @if (personSelected && personSelected.brothers && personSelected.brothers.length > 0) {
+          <p>
+            <strong>{{ 'Broters and sisters:' }}</strong>
+            @for (brother of personSelected.brothers; track $index) {
+              @if ($index > 0) {
+                ,
+              }
+              <a [routerLink]="['/pages/show', brother.id]">
+                {{ brother.first_name }} {{ brother.last_name }}
+              </a>
+            }
+          </p>
+        }
       </div>
     </div>
 
@@ -83,7 +123,7 @@
       <div class="flex-1 relative pl-6 border-l-4 border-zinc-300 space-y-8">
         @if (eventSelected && eventSelected.length > 0) {
           @for (event of eventSelected; track event.id) {
-            <div class="relative">
+            <div class="relative custom-event" (click)="handleClickOnEvent(event.id)">
               <div class="date-marker"></div>
 
               <div class="bg-white rounded-lg shadow-md overflow-hidden border border-gray-200">

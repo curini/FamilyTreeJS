@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { myPersons } from '../../constants/my-persons';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, RouterLink, Router } from '@angular/router';
 import { DatePipe } from '@angular/common';
 import { myCities } from '../../constants/my-cities';
 import { myEvents } from '../../constants/my-events';
@@ -18,6 +18,14 @@ type Event = {
   updated_at: string;
 };
 
+type Identity = {
+  id: number;
+  first_name: string;
+  last_name: string;
+  mother_id?: number;
+  father_id?: number;
+};
+
 type Person = {
   id: number;
   first_name: string;
@@ -28,19 +36,16 @@ type Person = {
   age: number;
   image_id: number | null;
   description: string | null;
-  mother_person: { id: number; first_name: string; last_name: string } | null;
-  father_person: { id: number; first_name: string; last_name: string } | null;
-  spouse_person: { id: number; first_name: string; last_name: string } | null;
+  mother_person: Identity | null;
+  father_person: Identity | null;
+  spouse_person: Identity | null;
   events: { id: number }[] | [];
   spouse_id: number | null;
   father_id: number | null;
   mother_id: number | null;
-  children_as_mother:
-    | { id: number; first_name: string; last_name: string; mother_id?: number }[]
-    | [];
-  children_as_father:
-    | { id: number; first_name: string; last_name: string; father_id?: number }[]
-    | [];
+  children_as_mother: Identity[] | [];
+  children_as_father: Identity[] | [];
+  brothers?: Identity[] | [];
 };
 
 type City = {
@@ -61,6 +66,7 @@ export class Show implements OnInit {
   private myEvents: Event[] = myEvents;
   private myImages = myImages;
   private route = inject(ActivatedRoute);
+  private navigateRouter = inject(Router);
   public personSelected: Person | null = null;
   public eventSelected: Event[] = [];
 
@@ -119,6 +125,10 @@ export class Show implements OnInit {
       'Other',
     ];
     return eventType[typeId] ? eventType[typeId] : 'Type inconnu';
+  }
+
+  handleClickOnEvent(eventId: number): void {
+    this.navigateRouter.navigate(['/events/show', eventId]);
   }
 
   getCity(cityId: number | null): string {

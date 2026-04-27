@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { myEvents } from '../../../persons/constants/my-events';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-show',
@@ -7,5 +9,5 @@ import { Component } from '@angular/core';
   styleUrl: './show.css',
 })
 export class Show {
-
+  private activatedRoute = inject(ActivatedRoute);
 }
