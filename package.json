@@ -31,6 +31,7 @@
     "@angular/router": "^21.0.0",
     "@balkangraph/familytree.js": "^1.9.47",
     "@capacitor/android": "^8.1.0",
+    "@capacitor/app": "^8.1.0",
     "@capacitor/cli": "^8.1.0",
     "@capacitor/core": "^8.1.0",
     "@capacitor/ios": "^8.1.0",
