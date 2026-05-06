@@ -5,6 +5,7 @@ import { DatePipe } from '@angular/common';
 import { myCities } from '../../constants/my-cities';
 import { myEvents } from '../../constants/my-events';
 import { myImages } from '../../constants/my-images';
+import { Person } from '../../models/persons';
 
 type Event = {
   id: number;
@@ -16,36 +17,6 @@ type Event = {
   city_id: number | null;
   created_at: string;
   updated_at: string;
-};
-
-type Identity = {
-  id: number;
-  first_name: string;
-  last_name: string;
-  mother_id?: number;
-  father_id?: number;
-};
-
-type Person = {
-  id: number;
-  first_name: string;
-  first_names: string;
-  last_name: string;
-  job: string | null;
-  gender_id: number;
-  age: number;
-  image_id: number | null;
-  description: string | null;
-  mother_person: Identity | null;
-  father_person: Identity | null;
-  spouse_person: Identity | null;
-  events: { id: number }[] | [];
-  spouse_id: number | null;
-  father_id: number | null;
-  mother_id: number | null;
-  children_as_mother: Identity[] | [];
-  children_as_father: Identity[] | [];
-  brothers?: Identity[] | [];
 };
 
 type City = {
